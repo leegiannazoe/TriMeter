@@ -1,0 +1,208 @@
+/* Fonts */
+@font-face {
+  font-family: 'QuiapoBarya';
+  src: url('BaryaLangPoSaUmagaExtraBold-3zLdX.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Basta nalimutan ko para san toh*/
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+/* Start Screen*/
+#start-screen {
+  pointer-events: auto;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background: url("bg.png") center/cover no-repeat;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 8vw;
+  padding-top: 10vh;
+
+  z-index: 10;
+}
+
+/* Start Button */
+#start-btn {
+  font-family: 'QuiapoBarya', sans-serif;
+  padding: 20px 56px;
+  font-size: 28px;
+  letter-spacing: 2px;
+
+  border: 4px solid black;
+  background: #f6bf66;
+  color: black;
+  text-transform: uppercase;
+
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.45);
+  border-radius: 6px;
+
+  animation: pulse 1.6s infinite;
+  cursor: pointer;
+
+  pointer-events: auto;
+  z-index: 20;
+}
+
+/* BUTTON ANIMATION */
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* HIDE */
+.hidden {
+  display: none;
+}
+
+/* SPLIT SCREEN */
+.split {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* MAP */
+#map {
+  flex: 1;
+  min-width: 0;        
+  height: 100vh;
+  background: #ddd;   
+}
+
+/* RIGHT PANEL / FARE METER */
+.right {
+  width: 360px;
+  padding: 20px;
+
+  background: url("farebg.png") center / cover no-repeat;
+
+  font-family: 'QuiapoBarya', 'Bebas Neue', sans-serif;
+  color: white;
+
+  overflow-y: auto;
+  flex-shrink: 0;
+
+  border-left: 4px solid black;
+}
+
+/* Make all text inside white by default */
+.right h2,
+.right h3,
+.right label,
+.right p,
+.right select,
+.right button {
+  color: white;
+}
+
+/* TriMeter title in Jeepney font */
+.meter-title {
+  font-family: 'QuiapoBarya', sans-serif;
+  font-size: 36px;
+  letter-spacing: 3px;
+  text-align: center;
+  margin-bottom: 0;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.6); /* optional outline effect */
+}
+
+/* Baybayin text under TriMeter */
+.baybayin {
+  font-family: 'Noto Sans Tagalog', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  margin-top: -4px;
+  opacity: 0.85;
+}
+
+/* FORM */
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input, select, .right button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  background: #2a2a2a;
+  border: 2px solid white;
+  color: white;
+  font-family: 'QuiapoBarya', sans-serif;
+}
+
+/* Receipt*/
+#receipt {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(0,0,0,0.6); /* semi-transparent dark box */
+  border: 2px dashed #fff;      /* white dashed border */
+  color: #fff;                  /* white text */
+  font-family: 'QuiapoBarya', sans-serif;
+}
+
+
+/* Mobile version */
+@media (max-width: 768px) {
+  .split {
+    flex-direction: column; /* stack map above meter */
+    height: auto;
+  }
+
+  #map {
+    height: 50vh; /* half screen height for map */
+    width: 100%;
+  }
+
+  .right {
+    width: 100%;      /* full width on mobile */
+    height: auto;
+    padding: 15px;
+    border-left: none;
+    border-top: 4px solid black;
+  }
+
+  #start-screen {
+    padding-right: 4vw;
+    padding-top: 5vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .meter-title {
+    font-size: 28px;
+  }
+
+  .baybayin {
+    font-size: 16px;
+  }
+
+  input, select, .right button {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  #start-btn {
+    font-size: 24px;
+    padding: 16px 40px;
+  }
+}
