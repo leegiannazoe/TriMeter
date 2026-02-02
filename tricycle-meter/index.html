@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TriMeter</title>
+
+  <!-- Leaflet Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tagalog&display=swap" rel="stylesheet">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- START SCREEN -->
+<div id="start-screen">
+  <button id="start-btn">START RIDE</button>
+</div>
+
+<!-- MAIN APP -->
+<div id="main-app" class="hidden">
+  <div class="split">
+
+    <!-- MAP -->
+    <div id="map"></div>
+
+    <!-- CONTROLS / FARE METER -->
+    <div class="right">
+      <!-- Jeepney-style title + Baybayin -->
+      <h2 class="meter-title">TriMeter</h2>
+      <p class="baybayin">ᜆ᜔ᜇᜒᜃ᜔ᜌ᜔ᜃ᜔ᜎᜒ</p>
+
+      <!-- Fare Form -->
+      <label>Fare Type</label>
+      <select id="fareType">
+        <option value="regular">Regular Fare</option>
+        <option value="special">Special Fare</option>
+      </select>
+
+      <label>Passengers</label>
+      <select id="passengers">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+
+      <label>Passenger Category</label>
+      <select id="category">
+        <option value="regular">Regular</option>
+        <option value="discount">PWD / Senior / Student</option>
+      </select>
+
+      <button onclick="calculateFare()">Calculate Fare</button>
+
+      <!-- Receipt -->
+      <div id="receipt">
+        <h3>Fare Receipt</h3>
+        <p id="receipt-text">—</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Horn Sound -->
+<audio id="horn" src="horn.mp3"></audio>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
