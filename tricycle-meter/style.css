@@ -1,16 +1,15 @@
-/* ==============================
-   FONTS
-============================== */
+/* Fonts */
 @font-face {
   font-family: 'QuiapoBarya';
   src: url('BaryaLangPoSaUmagaExtraBold-3zLdX.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
+.split {
+  min-height: 100vh;
+}
 
-/* ==============================
-   GLOBAL
-============================== */
+/* nalimutan ko para san ka */
 html, body {
   height: 100%;
   margin: 0;
@@ -26,9 +25,7 @@ body {
   margin: 0;
 }
 
-/* ==============================
-   START SCREEN
-============================== */
+/* Start screen */
 #start-screen {
   pointer-events: auto;
   position: relative;
@@ -45,9 +42,7 @@ body {
   z-index: 10;
 }
 
-/* ==============================
-   START BUTTON
-============================== */
+/* Start button */
 #start-btn {
   font-family: 'QuiapoBarya', sans-serif;
   padding: 20px 56px;
@@ -69,7 +64,7 @@ body {
   z-index: 20;
 }
 
-/* BUTTON ANIMATION */
+/* Button animation */
 @keyframes pulse {
   0%   { transform: scale(1); }
   50%  { transform: scale(1.05); }
@@ -78,10 +73,13 @@ body {
 
 /* HIDE */
 .hidden {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
 }
 
-/* SPLIT SCREEN */
+/* PARA HIWALAY YUNG SCREEN */
 .split {
   display: flex;
   flex-direction: row;
@@ -92,14 +90,15 @@ body {
 /* MAP */
 #map {
   flex: 1;
-  min-width: 0;        
-  height: 100vh;
-  background: #ddd;   
+  min-width: 0;
+  height: 100%;
+  min-height: 300px; /* para di blue */
+  background: #ddd;
   position: relative;
-  z-index: 1; /* map behind right panel */
+  z-index: 1;
 }
 
-/* RIGHT PANEL / FARE METER */
+/* RIGHT PANEL - FARE METER */
 .right {
   width: 360px;
   padding: 20px;
@@ -109,7 +108,7 @@ body {
   overflow-y: auto;
   flex-shrink: 0;
   border-left: 4px solid black;
-  position: relative; /* ensures it sits above map */
+  position: relative;
   z-index: 10;
 }
 
@@ -155,51 +154,46 @@ input, select, .right button {
   border: 2px solid white;
   color: white;
   font-family: 'QuiapoBarya', sans-serif;
-  pointer-events: auto;
   cursor: pointer;
 }
 
-/* ==============================
-   RECEIPT
-============================== */
+/* Receipt */
 #receipt {
   margin-top: 20px;
   padding: 15px;
-  background: rgba(0,0,0,0.6); /* semi-transparent dark box */
+  background: rgba(0,0,0,0.6);
   border: 2px dashed #fff;
-  color: #fff;
-  font-family: 'QuiapoBarya', sans-serif;
 }
 
-/* ==============================
-   MOBILE RESPONSIVE
-============================== */
+/* ===========================
+   MOBILE VER (MAP ON TOP)
+   =========================== */
+
 @media (max-width: 768px) {
+
   .split {
-    flex-direction: column; /* stack map above meter */
-    height: auto;
+    flex-direction: column;
+    height: 100vh;
   }
 
   #map {
-    height: 50vh; /* half screen height for map */
+    height: 45vh;
     width: 100%;
+    border-bottom: 4px solid black;
   }
 
   .right {
-    width: 100%;      /* full width on mobile */
-    height: auto;
-    padding: 15px;
+    width: 100%;
+    height: 55vh;
+    padding: 16px;
     border-left: none;
-    border-top: 4px solid black;
   }
 
-  #start-screen {
-    padding-right: 4vw;
-    padding-top: 5vh;
+  input, select, .right button {
+    font-size: 16px;
+    padding: 12px;
   }
-}
 
-@media (max-width: 480px) {
   .meter-title {
     font-size: 28px;
   }
@@ -207,14 +201,20 @@ input, select, .right button {
   .baybayin {
     font-size: 16px;
   }
+}
 
-  input, select, .right button {
-    font-size: 14px;
-    padding: 8px;
+@media (max-width: 480px) {
+
+  #map {
+    height: 40vh;
+  }
+
+  .right {
+    height: 60vh;
   }
 
   #start-btn {
-    font-size: 24px;
-    padding: 16px 40px;
+    font-size: 22px;
+    padding: 14px 36px;
   }
 }
